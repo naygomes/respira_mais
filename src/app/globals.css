@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import 'tailwindcss';
+@source "../node_modules/@acmecorp/ui-lib";
+
+@theme {
+  --color-primary: #f37308;
+  --color-secondary: #246cda;
+  --color-background: #fff2e7;
+  --color-light: #f8f5f2;
+  --color-dark: #171717;
+}
+
+body {
+  background-color: var(--color-background);
+  font-family: Inter, sans-serif;
+}
+
+* {
+  transition: all 0.3s ease-in-out;
+}
