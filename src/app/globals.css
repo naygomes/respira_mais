@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @import 'tailwindcss';
 @source "../node_modules/@acmecorp/ui-lib";
 
@@ -10,11 +10,15 @@
   --color-dark: #171717;
 }
 
-body {
-  background-color: var(--color-background);
-  font-family: Inter, sans-serif;
-}
-
 * {
   transition: all 0.3s ease-in-out;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+  background-color: var(--color-background);
+  font-family: Nunito, sans-serif;
 }
