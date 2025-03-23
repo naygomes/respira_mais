@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "leaflet": "^1.9.4",
     "next": "15.2.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-leaflet": "^5.0.0",
+    "react-select": "^5.10.1",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -21,6 +25,8 @@
     "@types/node": "^20.17.25",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19",
+    "@types/react-leaflet": "^2.8.3",
+    "@types/react-select": "^5.0.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.23.0",
     "eslint-config-next": "15.2.3",
