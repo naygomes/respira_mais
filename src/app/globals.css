@@ -22,3 +22,8 @@ body {
   background-color: var(--color-background);
   font-family: Nunito, sans-serif;
 }
+
+#page-map {
+  width: 100vw;
+  height: 100vh;
+}
