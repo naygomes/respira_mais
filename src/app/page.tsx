@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import useGeolocation from '@/hooks/useGeolocation';
+import getNeighborhoods from '@/api/getNeighborhoods';
 
 const initialPosition = { lat: -22.897, lng: -43.338 };
 
@@ -21,6 +22,19 @@ function Home() {
       }),
     [],
   );
+
+  const getData = async () => {
+    const result = await getNeighborhoods();
+    if (result) {
+      console.log(result);
+      return result;
+    }
+    return undefined;
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   const { location, error } = useGeolocation();
 
