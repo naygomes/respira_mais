@@ -2,28 +2,33 @@
 
 import { useState, useMemo } from 'react';
 import dynamic from 'next/dynamic';
+import useGeolocation from '@/hooks/useGeolocation';
 
 const initialPosition = { lat: -22.897, lng: -43.338 };
 
+const loadingClasses =
+  'text-secondary text-xl animate-pulse h-screen flex items-center justify-center';
+const LoadingComponent = <p className={loadingClasses}>Carregando...</p>;
+
 function Home() {
+  const [position, setPosition] = useState(initialPosition);
+
   const Map = useMemo(
     () =>
       dynamic(() => import('@/components/Map/Map'), {
-        loading: () => (
-          <p className="text-secondary text-xl animate-pulse h-screen flex items-center justify-center">
-            Carregando...
-          </p>
-        ),
+        loading: () => LoadingComponent,
         ssr: false,
       }),
     [],
   );
 
-  const [position, setPosition] = useState(initialPosition);
+  const { location, error } = useGeolocation();
+
+  if (error) return <p>Erro: {error}</p>;
 
   return (
-    <div id="page-map">
-      <Map zoom={12} position={position} />
+    <div id="page-map" className="pt-23">
+      <Map location={location} position={position} />
     </div>
   );
 }

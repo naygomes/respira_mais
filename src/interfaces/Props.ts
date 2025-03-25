@@ -1,4 +1,7 @@
+import { Coordinates } from './Coordinates';
+
 export interface MapProps {
   zoom?: number;
-  position: { lat: number; lng: number };
+  position: Coordinates;
+  location: Coordinates;
 }

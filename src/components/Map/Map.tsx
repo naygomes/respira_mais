@@ -4,10 +4,10 @@ import { MapContainer, Marker, TileLayer, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
-import { MapProps } from '@/interfaces/Props';
+import { MapProps } from '@/interfaces';
 import { HOST_MAP } from '../../../settings';
 
-const Map = ({ position, zoom = 12 }: MapProps) => {
+const Map = ({ position, location, zoom = 12 }: MapProps) => {
   return (
     <MapContainer
       center={position}
@@ -19,7 +19,7 @@ const Map = ({ position, zoom = 12 }: MapProps) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url={HOST_MAP}
       />
-      <Marker position={position}>
+      <Marker position={location}>
         <Popup></Popup>
       </Marker>
     </MapContainer>

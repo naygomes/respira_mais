@@ -14,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={`antialiased`}>
+      <body
+        className={`antialiased`}
+        style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}
+      >
         <Header />
         {children}
       </body>
