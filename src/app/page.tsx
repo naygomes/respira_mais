@@ -1,20 +1,24 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import dynamic from 'next/dynamic';
-
-const Map = dynamic(() => import('@/components/Map/Map'), {
-  ssr: false,
-  loading: () => (
-    <p className="text-secondary text-xl animate-pulse h-screen flex items-center justify-center">
-      Carregando...
-    </p>
-  ),
-});
 
 const initialPosition = { lat: -22.897, lng: -43.338 };
 
 function Home() {
+  const Map = useMemo(
+    () =>
+      dynamic(() => import('@/components/Map/Map'), {
+        loading: () => (
+          <p className="text-secondary text-xl animate-pulse h-screen flex items-center justify-center">
+            Carregando...
+          </p>
+        ),
+        ssr: false,
+      }),
+    [],
+  );
+
   const [position, setPosition] = useState(initialPosition);
 
   return (
