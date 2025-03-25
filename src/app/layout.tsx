@@ -1,6 +1,11 @@
-import { ReactNode } from "react";
-import { Header } from "@/components";
-import "./globals.css";
+import { ReactNode } from 'react';
+import { Header } from '@/components';
+import './globals.css';
+
+export const metadata = {
+  title: 'Respira+',
+  icons: '/logo.png',
+};
 
 export default function RootLayout({
   children,
@@ -9,10 +14,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body
-        className={`antialiased`}
-      >
-        <Header/>
+      <body className={`antialiased`}>
+        <Header />
         {children}
       </body>
     </html>
