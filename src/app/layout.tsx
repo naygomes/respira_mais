@@ -15,9 +15,9 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={`antialiased`}>
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col justify-between min-h-screen">
           <Header />
-          {children}
+          <div className="pt-22">{children}</div>
           <Footer />
         </div>
       </body>
