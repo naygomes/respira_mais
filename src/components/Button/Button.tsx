@@ -1,17 +1,13 @@
-import { FC } from 'react';
 import { getButtonClasses } from '@/utils';
+import { ButtonProps } from '@/interfaces';
 
-type ButtonProps = {
-  type: 'solid' | 'outline' | 'text';
-  children: string;
-};
-
-const Button: FC<ButtonProps> = ({ type, children }) => {
+const Button = ({ type = 'solid', children, onClick }: ButtonProps) => {
   const buttonClasses = getButtonClasses(type);
 
   return (
     <button
-      className={`${buttonClasses} py-2 px-4 text-3xl font-light hover:scale-110`}
+      className={`${buttonClasses} py-2 px-4 text-2xl font-light hover:scale-110`}
+      onClick={onClick}
     >
       {children}
     </button>
