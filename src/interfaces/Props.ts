@@ -19,7 +19,7 @@ export interface PaginationProps {
 }
 
 export interface TableProps {
-  mainPage?: boolean;
+  hasPagination?: boolean;
   headList: Array<string>;
   data: Array<Neighborhood>;
 }

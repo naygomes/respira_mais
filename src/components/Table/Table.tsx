@@ -2,7 +2,11 @@ import { Pagination } from '@/components';
 import { TableProps } from '@/interfaces';
 import { formatDate, getAirQualityLevel } from '@/utils';
 
-const Table = ({ mainPage = true, headList = [], data = [] }: TableProps) => {
+const Table = ({
+  hasPagination = true,
+  headList = [],
+  data = [],
+}: TableProps) => {
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500">
@@ -41,7 +45,7 @@ const Table = ({ mainPage = true, headList = [], data = [] }: TableProps) => {
           })}
         </tbody>
       </table>
-      {!mainPage && <Pagination />}
+      {hasPagination && <Pagination />}
     </div>
   );
 };
