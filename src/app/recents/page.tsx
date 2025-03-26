@@ -72,7 +72,11 @@ const Recents = () => {
         <Text>{description}</Text>
       </div>
       <Table headList={tableHeadList} data={neighborhoodData} />
-      <Pagination page={pagination.page} onPageChange={handlePagination} />
+      <Pagination
+        page={pagination.page}
+        totalPages={5}
+        onPageChange={handlePagination}
+      />
     </div>
   );
 };
