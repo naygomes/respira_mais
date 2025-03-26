@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Header } from '@/components';
+import { Footer, Header } from '@/components';
 import './globals.css';
 
 export const metadata = {
@@ -14,12 +14,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body
-        className={`antialiased`}
-        style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}
-      >
-        <Header />
-        {children}
+      <body className={`antialiased`}>
+        <div className="flex flex-col h-screen">
+          <Header />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );
