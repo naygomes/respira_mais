@@ -4,6 +4,7 @@ export interface Neighborhood {
   region: string;
   coordinates: Array<number>;
   iqar: number;
+  iqarLevel: string;
   source: string;
   recommendations: string;
   lastMeasures: Array<number>;
