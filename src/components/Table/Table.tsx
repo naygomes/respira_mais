@@ -1,5 +1,6 @@
 import { Pagination } from '@/components';
 import { TableProps } from '@/interfaces';
+import { formatDate } from '@/utils';
 
 const Table = ({ mainPage = true, headList = [], data = [] }: TableProps) => {
   return (
@@ -33,7 +34,7 @@ const Table = ({ mainPage = true, headList = [], data = [] }: TableProps) => {
                 <td className="px-6 py-4">{item.iqar}</td>
                 <td className="px-6 py-4">{item.iqar}</td>
                 <td className="px-6 py-4">{item.source}</td>
-                <td className="px-6 py-4">{item.createdAt}</td>
+                <td className="px-6 py-4">{formatDate(item.createdAt)}</td>
                 <td className="px-6 py-4">{item.recommendations}</td>
               </tr>
             );
