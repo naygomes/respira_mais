@@ -19,7 +19,7 @@ const Map = ({ position, location, zoom = 12 }: MapProps) => {
   ];
 
   return (
-    <div id="page-map" className="pt-23">
+    <div id="page-map" className="pt-22">
       <MapContainer
         center={position}
         zoom={zoom}
