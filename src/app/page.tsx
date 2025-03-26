@@ -4,7 +4,6 @@ import { useState, useMemo, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import useGeolocation from '@/hooks/useGeolocation';
 import getNeighborhoods from '@/api/getNeighborhoods';
-import { Table, Title } from '@/components';
 
 const initialPosition = { lat: -22.897, lng: -43.338 };
 const headList = [
@@ -22,7 +21,7 @@ const LoadingComponent = <p className={loadingClasses}>Carregando...</p>;
 
 function Home() {
   const [position, setPosition] = useState(initialPosition);
-  const [data, setData] = useState([]);
+  const [tableData, setTableData] = useState([]);
 
   const Map = useMemo(
     () =>
@@ -33,17 +32,34 @@ function Home() {
     [],
   );
 
-  const getData = async () => {
+  const Title = useMemo(
+    () =>
+      dynamic(() => import('@/components/Title/Title'), {
+        ssr: false,
+      }),
+    [],
+  );
+
+  const Table = useMemo(
+    () =>
+      dynamic(() => import('@/components/Table/Table'), {
+        loading: () => LoadingComponent,
+        ssr: false,
+      }),
+    [],
+  );
+
+  const getTableData = async () => {
     const result = await getNeighborhoods();
     if (result) {
-      setData(result);
+      setTableData(result);
       return result;
     }
     return undefined;
   };
 
   useEffect(() => {
-    getData();
+    getTableData();
   }, []);
 
   const { location, error } = useGeolocation();
@@ -55,7 +71,7 @@ function Home() {
       <Map location={location} position={position} />
       <div className="flex flex-col items-center justify-center w-screen">
         <Title>Mais recentes</Title>
-        <Table mainPage headList={headList} data={data} />
+        <Table mainPage headList={headList} data={tableData} />
       </div>
     </>
   );

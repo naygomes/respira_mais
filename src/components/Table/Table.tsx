@@ -8,9 +8,9 @@ const Table = ({ mainPage = true, headList = [], data = [] }: TableProps) => {
       <table className="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead className="text-base text-gray-700 bg-gray-50">
           <tr>
-            {headList.map((header) => {
+            {headList.map((header, item) => {
               return (
-                <th scope="col" className="px-6 py-3">
+                <th key={item} scope="col" className="px-6 py-3">
                   {header}:
                 </th>
               );
@@ -32,7 +32,7 @@ const Table = ({ mainPage = true, headList = [], data = [] }: TableProps) => {
                 </th>
                 <td className="px-6 py-4">{item.region}</td>
                 <td className="px-6 py-4">{item.iqar}</td>
-                <td className="px-6 py-4">{item.iqar}</td>
+                <td className="px-6 py-4"></td>
                 <td className="px-6 py-4">{item.source}</td>
                 <td className="px-6 py-4">{formatDate(item.createdAt)}</td>
                 <td className="px-6 py-4">{item.recommendations}</td>
