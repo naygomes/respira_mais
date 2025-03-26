@@ -69,11 +69,7 @@ function Home() {
       <Map location={location} position={position} />
       <div className="flex flex-col items-center justify-center w-screen">
         <Title>Mais recentes</Title>
-        <Table
-          hasPagination={false}
-          headList={tableHeadList}
-          data={neighborhoodData}
-        />
+        <Table headList={tableHeadList} data={neighborhoodData} />
         <div className="p-8 flex justify-end w-screen">
           <Button type="solid" onClick={handleNavigation}>
             Veja mais

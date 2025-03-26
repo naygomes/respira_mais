@@ -1,12 +1,7 @@
-import { Pagination } from '@/components';
 import { TableProps } from '@/interfaces';
-import { formatDate, getAirQualityLevel } from '@/utils';
+import { formatDate } from '@/utils';
 
-const Table = ({
-  hasPagination = true,
-  headList = [],
-  data = [],
-}: TableProps) => {
+const Table = ({ headList = [], data = [] }: TableProps) => {
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500">
@@ -36,7 +31,7 @@ const Table = ({
                 </th>
                 <td className="px-6 py-4">{item.region}</td>
                 <td className="px-6 py-4">{item.iqar}</td>
-                <td className="px-6 py-4">{getAirQualityLevel(item.iqar)}</td>
+                <td className="px-6 py-4">{item.iqarLevel}</td>
                 <td className="px-6 py-4">{item.source}</td>
                 <td className="px-6 py-4">{formatDate(item.createdAt)}</td>
                 <td className="px-6 py-4">{item.recommendations}</td>
@@ -45,7 +40,6 @@ const Table = ({
           })}
         </tbody>
       </table>
-      {hasPagination && <Pagination />}
     </div>
   );
 };

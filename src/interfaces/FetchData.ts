@@ -1,5 +1,10 @@
 export interface FetchDataParams {
-  [key: string]: string | number | boolean | null;
+  page?: number;
+  limit?: number;
+  name?: string;
+  iqarLevel?: string;
+  orderBy?: string;
+  order?: string;
 }
 
 export interface FetchData {

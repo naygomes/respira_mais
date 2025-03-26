@@ -5,6 +5,10 @@ export interface ButtonProps {
   children: string;
   onClick: (...args: any[]) => any;
 }
+export interface FilterProps {
+  name?: string;
+  iqarLevel?: string;
+}
 export interface MapProps {
   zoom?: number;
   position: Coordinates;
@@ -13,13 +17,13 @@ export interface MapProps {
 
 export interface PaginationProps {
   page: number;
-  itemsPerPage: number;
-  totalPages: number;
-  totalItems: number;
+  limit?: number;
+  totalPages?: number;
+  totalItems?: number;
+  onPageChange: (page: string) => void;
 }
 
 export interface TableProps {
-  hasPagination?: boolean;
   headList: Array<string>;
   data: Array<Neighborhood>;
 }
