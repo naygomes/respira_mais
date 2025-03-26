@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import { useGeolocation, useNeighborhoodData } from '@/hooks';
 import { FetchDataParams } from '@/interfaces';
@@ -27,6 +28,14 @@ function Home() {
     [],
   );
 
+  const Button = useMemo(
+    () =>
+      dynamic(() => import('@/components/Button/Button'), {
+        ssr: false,
+      }),
+    [],
+  );
+
   const Title = useMemo(
     () =>
       dynamic(() => import('@/components/Title/Title'), {
@@ -44,9 +53,14 @@ function Home() {
     [],
   );
 
+  const router = useRouter();
   const [position, setPosition] = useState(initialPosition);
   const { neighbordhoodData, error } = useNeighborhoodData(params);
   const { location } = useGeolocation();
+
+  const handleNavigation = () => {
+    router.push('/recents');
+  };
 
   if (error) return <p>Erro: {error}</p>;
 
@@ -56,6 +70,11 @@ function Home() {
       <div className="flex flex-col items-center justify-center w-screen">
         <Title>Mais recentes</Title>
         <Table mainPage headList={tableHeadList} data={neighbordhoodData} />
+        <div className="p-8 flex justify-end w-screen">
+          <Button type="solid" onClick={handleNavigation}>
+            Veja mais
+          </Button>
+        </div>
       </div>
     </>
   );

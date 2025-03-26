@@ -1,5 +1,10 @@
 import { Coordinates, Neighborhood } from '@/interfaces';
 
+export interface ButtonProps {
+  type?: 'solid' | 'outline' | 'text';
+  children: string;
+  onClick: (...args: any[]) => any;
+}
 export interface MapProps {
   zoom?: number;
   position: Coordinates;
