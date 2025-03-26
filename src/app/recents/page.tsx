@@ -1,6 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import { Table, Text, Title } from '@/components';
+import { FetchDataParams } from '@/interfaces';
 import { useNeighborhoodData } from '@/hooks';
 import { tableHeadList } from '@/utils';
 
@@ -9,7 +11,8 @@ const description =
   'No Respira+, você fica por dentro de como tá o ar em qualquer canto da cidade para aproveitar o Rio com a tranquilidade que só o carioca sabe ter.';
 
 const Recents = () => {
-  const { neighborhoodData, loading, error } = useNeighborhoodData();
+  const [params, setParams] = useState<FetchDataParams>({ page: 1, limit: 10 });
+  const { neighborhoodData, loading, error } = useNeighborhoodData(params);
 
   if (loading)
     return (
