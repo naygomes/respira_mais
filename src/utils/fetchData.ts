@@ -43,7 +43,7 @@ const fetchData: FetchData = {
         .map(([key, value]) => [key, String(value)]),
     ).toString();
     const url = queryString
-      ? `${baseURL}${endpoint}/${queryString}`
+      ? `${baseURL}${endpoint}?${queryString}`
       : `${baseURL}${endpoint}`;
     return this.request(url, 'GET', null, customHeaders);
   },
