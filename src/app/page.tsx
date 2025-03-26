@@ -1,28 +1,23 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import dynamic from 'next/dynamic';
-import useGeolocation from '@/hooks/useGeolocation';
-import getNeighborhoods from '@/api/getNeighborhoods';
+import { useGeolocation, useNeighborhoodData } from '@/hooks';
+import { FetchDataParams } from '@/interfaces';
+import { tableHeadList, initialPosition } from '@/utils';
 
-const initialPosition = { lat: -22.897, lng: -43.338 };
-const headList = [
-  'Bairro',
-  'Região',
-  'IQAr',
-  'Nível de Qualidade do Ar',
-  'Fonte',
-  'Data',
-  'Recomendação',
-];
+const params: FetchDataParams = {
+  orderBy: 'createdAt',
+  order: 'desc',
+  page: 1,
+  limit: 10,
+};
+
 const loadingClasses =
   'text-secondary text-xl animate-pulse h-screen flex items-center justify-center';
 const LoadingComponent = <p className={loadingClasses}>Carregando...</p>;
 
 function Home() {
-  const [position, setPosition] = useState(initialPosition);
-  const [tableData, setTableData] = useState([]);
-
   const Map = useMemo(
     () =>
       dynamic(() => import('@/components/Map/Map'), {
@@ -49,20 +44,9 @@ function Home() {
     [],
   );
 
-  const getTableData = async () => {
-    const result = await getNeighborhoods();
-    if (result) {
-      setTableData(result);
-      return result;
-    }
-    return undefined;
-  };
-
-  useEffect(() => {
-    getTableData();
-  }, []);
-
-  const { location, error } = useGeolocation();
+  const [position, setPosition] = useState(initialPosition);
+  const { neighbordhoodData, error } = useNeighborhoodData(params);
+  const { location } = useGeolocation();
 
   if (error) return <p>Erro: {error}</p>;
 
@@ -71,7 +55,7 @@ function Home() {
       <Map location={location} position={position} />
       <div className="flex flex-col items-center justify-center w-screen">
         <Title>Mais recentes</Title>
-        <Table mainPage headList={headList} data={tableData} />
+        <Table mainPage headList={tableHeadList} data={neighbordhoodData} />
       </div>
     </>
   );
