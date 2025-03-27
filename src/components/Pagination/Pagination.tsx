@@ -6,10 +6,6 @@ const Pagination = ({ page, totalPages, onPageChange }: PaginationProps) => {
       className="flex items-center flex-wrap md:flex-row justify-between p-4"
       aria-label="Table navigation"
     >
-      <span className="text-sm font-normal text-gray-500  mb-4 md:mb-0 block w-full md:inline md:w-auto">
-        {/* Showing <span className="font-semibold text-gray-900">1-10</span> of{' '}
-        <span className="font-semibold text-gray-900">1000</span> */}
-      </span>
       <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
         <li>
           <a

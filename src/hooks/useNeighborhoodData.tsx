@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import getNeighborhoods from '@/api/getNeighborhoods';
-import { FetchDataParams } from '@/interfaces';
+import { FetchDataParams, Neighborhood } from '@/interfaces';
 
 const useNeighborhoodData = (params?: FetchDataParams) => {
   const [neighborhoodData, setNeighborhoodData] = useState<any[]>([]);
+  const [allData, setAllData] = useState<Array<Neighborhood>>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -14,6 +15,9 @@ const useNeighborhoodData = (params?: FetchDataParams) => {
     try {
       const result = await getNeighborhoods(queryParams);
       if (result) {
+        if (!queryParams) {
+          setAllData(result);
+        }
         setNeighborhoodData(result);
       }
     } catch (err) {
@@ -25,10 +29,14 @@ const useNeighborhoodData = (params?: FetchDataParams) => {
   };
 
   useEffect(() => {
+    getNeighborhoodData();
+  }, []);
+
+  useEffect(() => {
     getNeighborhoodData(params);
   }, [params]);
 
-  return { neighborhoodData, loading, error };
+  return { neighborhoodData, allData, loading, error };
 };
 
 export default useNeighborhoodData;

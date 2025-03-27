@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Pagination, Table, Text, Title } from '@/components';
+import { Filter, Pagination, Table, Text, Title } from '@/components';
 import {
   FetchDataParams,
-  FilterProps,
+  FilterParams,
   OrderingParams,
   PaginationParams,
 } from '@/interfaces';
@@ -20,9 +20,10 @@ const Recents = () => {
     page: 1,
     limit: 10,
   });
-
-  const [filter, setFilter] = useState<FilterProps>({});
-
+  const [filter, setFilter] = useState<FilterParams>({
+    name: '',
+    iqarLevel: '',
+  });
   const [order, setOrder] = useState<OrderingParams>({
     orderBy: 'createdAt',
     order: 'desc',
@@ -33,7 +34,13 @@ const Recents = () => {
     ...filter,
     ...order,
   });
-  const { neighborhoodData, loading, error } = useNeighborhoodData(params);
+
+  const { neighborhoodData, allData, loading, error } =
+    useNeighborhoodData(params);
+
+  const [totalPages, setTotalPages] = useState<number>(
+    Math.ceil(allData.length / pagination.limit),
+  );
 
   const handlePagination: (action: string) => void = (action) => {
     if (action === 'next' && pagination.page < 5) {
@@ -48,6 +55,20 @@ const Recents = () => {
       }));
     }
   };
+
+  const handleFilter = (filter: FilterParams) => {
+    setFilter(filter);
+    setPagination({
+      ...pagination,
+      page: 1,
+    });
+  };
+
+  useEffect(() => {
+    if (allData) {
+      setTotalPages(Math.ceil(allData.length / pagination.limit));
+    }
+  }, [allData, pagination.limit]);
 
   useEffect(() => {
     setParams({
@@ -71,12 +92,15 @@ const Recents = () => {
         <Title>{cta}</Title>
         <Text>{description}</Text>
       </div>
+      <Filter neighborhoodsData={allData} onClick={handleFilter} />
       <Table headList={tableHeadList} data={neighborhoodData} />
-      <Pagination
-        page={pagination.page}
-        totalPages={5}
-        onPageChange={handlePagination}
-      />
+      {totalPages > 1 && (
+        <Pagination
+          page={pagination.page}
+          totalPages={totalPages}
+          onPageChange={handlePagination}
+        />
+      )}
     </div>
   );
 };

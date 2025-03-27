@@ -1,4 +1,4 @@
-import { Coordinates, Neighborhood } from '@/interfaces';
+import { Coordinates, FilterParams, Neighborhood } from '@/interfaces';
 
 export interface ButtonProps {
   type?: 'solid' | 'outline' | 'text';
@@ -6,8 +6,8 @@ export interface ButtonProps {
   onClick: (...args: any[]) => any;
 }
 export interface FilterProps {
-  name?: string;
-  iqarLevel?: string;
+  neighborhoodsData: Array<Neighborhood>;
+  onClick: (...args: any[]) => any;
 }
 export interface MapProps {
   zoom?: number;
@@ -21,6 +21,13 @@ export interface PaginationProps {
   totalPages?: number;
   totalItems?: number;
   onPageChange: (page: string) => void;
+}
+
+export interface SelectInputProps {
+  label: string;
+  placeholder?: string;
+  options: Array<string>;
+  onChange: (value: string) => void;
 }
 
 export interface TableProps {
