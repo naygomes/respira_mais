@@ -31,7 +31,11 @@ const Map = ({ position, location, zoom = 12 }: MapProps) => {
         </Marker>
         {allData &&
           allData.map((item) => (
-            <Polygon key={item.id} positions={item.coordinates} color="blue">
+            <Polygon
+              key={item.id}
+              positions={item.coordinates}
+              color="transparent"
+            >
               <Popup maxWidth={1000}>
                 <Card
                   title={item.name}
