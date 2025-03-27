@@ -5,6 +5,11 @@ export interface ButtonProps {
   children: string;
   onClick: (...args: any[]) => any;
 }
+export interface CardProps {
+  title: string;
+  iqarLevel: string;
+  chartData: Array<any>;
+}
 export interface FilterProps {
   neighborhoodsData: Array<Neighborhood>;
   onClick: (...args: any[]) => any;

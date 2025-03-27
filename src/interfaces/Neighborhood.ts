@@ -2,7 +2,7 @@ export interface Neighborhood {
   createdAt: string;
   name: string;
   region: string;
-  coordinates: Array<number>;
+  coordinates: [number, number][];
   iqar: number;
   iqarLevel: string;
   source: string;

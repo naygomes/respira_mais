@@ -7,16 +7,12 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import { MapProps } from '@/interfaces';
 import { HOST_MAP } from '../../../settings';
 import './Map.css';
+import { useNeighborhoodData } from '@/hooks';
+import Card from '../Card/Card';
+import { iqarLevels } from '@/utils';
 
 const Map = ({ position, location, zoom = 12 }: MapProps) => {
-  const bairroCoordinates: [number, number][] = [
-    [-23.034538, -43.492552],
-    [-23.012702, -43.390679],
-    [-22.994675, -43.390867],
-    [-22.995196, -43.432859],
-    [-23.020379, -43.508373],
-    [-23.03698, -43.49891],
-  ];
+  const { allData, error } = useNeighborhoodData();
 
   return (
     <div id="page-map">
@@ -31,11 +27,20 @@ const Map = ({ position, location, zoom = 12 }: MapProps) => {
           url={HOST_MAP}
         />
         <Marker position={location}>
-          <Popup></Popup>
+          <Popup>Você está aqui!</Popup>
         </Marker>
-        <Polygon positions={bairroCoordinates} color="blue">
-          <Popup>Informações sobre o bairro.</Popup>
-        </Polygon>
+        {allData &&
+          allData.map((item) => (
+            <Polygon key={item.id} positions={item.coordinates} color="blue">
+              <Popup>
+                <Card
+                  title={item.name}
+                  iqarLevel={item.iqarLevel}
+                  chartData={[]}
+                />
+              </Popup>
+            </Polygon>
+          ))}
       </MapContainer>
     </div>
   );
