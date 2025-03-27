@@ -63,8 +63,7 @@ O projeto foi desenvolvido para ser um sistema web versátil, por isso pode ser 
 
 ---
 ## Autora
- <img style="border-radius: 50px;" src="./frontend/src/assets/nayara.jpeg" width="100" alt="foto da autora"/>
- <br />
+
  
  Nayara Gomes<br/>
  <sub><b>Desenvolvedora Pleno</b></sub>
