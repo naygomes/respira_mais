@@ -2,6 +2,7 @@ export { default as Button } from './Button/Button';
 export { default as Filter } from './Filter/Filter';
 export { default as Footer } from './Footer/Footer';
 export { default as Header } from './Header/Header';
+export { default as LineChart } from './LineChart/LineChart';
 export { default as Map } from './Map/Map';
 export { default as Pagination } from './Pagination/Pagination';
 export { default as SelectInput } from './SelectInput/SelectInput';

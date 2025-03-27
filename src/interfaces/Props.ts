@@ -8,6 +8,7 @@ export interface ButtonProps {
 export interface CardProps {
   title: string;
   iqarLevel: string;
+  recommendation: string;
   chartData: Array<any>;
 }
 export interface FilterProps {
