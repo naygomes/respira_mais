@@ -1,20 +1,24 @@
 import { useEffect, useState } from 'react';
 import getNeighborhoods from '@/api/getNeighborhoods';
-import { FetchDataParams } from '@/interfaces';
+import { FetchDataParams, Neighborhood } from '@/interfaces';
 
-const useNeighbordhoodData = (params: FetchDataParams) => {
-  const [neighbordhoodData, setNeighbordhoodData] = useState<any[]>([]);
+const useNeighborhoodData = (params?: FetchDataParams) => {
+  const [neighborhoodData, setNeighborhoodData] = useState<any[]>([]);
+  const [allData, setAllData] = useState<Array<Neighborhood>>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const getNeighbordhoodData = async (params: FetchDataParams) => {
+  const getNeighborhoodData = async (queryParams?: FetchDataParams) => {
     setLoading(true);
     setError(null);
 
     try {
-      const result = await getNeighborhoods(params);
+      const result = await getNeighborhoods(queryParams);
       if (result) {
-        setNeighbordhoodData(result);
+        if (!queryParams) {
+          setAllData(result);
+        }
+        setNeighborhoodData(result);
       }
     } catch (err) {
       setError('Erro ao buscar os dados.');
@@ -25,10 +29,14 @@ const useNeighbordhoodData = (params: FetchDataParams) => {
   };
 
   useEffect(() => {
-    getNeighbordhoodData(params);
+    getNeighborhoodData();
+  }, []);
+
+  useEffect(() => {
+    getNeighborhoodData(params);
   }, [params]);
 
-  return { neighbordhoodData, loading, error };
+  return { neighborhoodData, allData, loading, error };
 };
 
-export default useNeighbordhoodData;
+export default useNeighborhoodData;

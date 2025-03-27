@@ -1,8 +1,18 @@
-import { Coordinates, Neighborhood } from '@/interfaces';
+import { Coordinates, FilterParams, Neighborhood } from '@/interfaces';
 
 export interface ButtonProps {
   type?: 'solid' | 'outline' | 'text';
   children: string;
+  onClick: (...args: any[]) => any;
+}
+export interface CardProps {
+  title: string;
+  iqarLevel: string;
+  recommendation: string;
+  chartData: Array<any>;
+}
+export interface FilterProps {
+  neighborhoodsData: Array<Neighborhood>;
   onClick: (...args: any[]) => any;
 }
 export interface MapProps {
@@ -13,13 +23,20 @@ export interface MapProps {
 
 export interface PaginationProps {
   page: number;
-  itemsPerPage: number;
-  totalPages: number;
-  totalItems: number;
+  limit?: number;
+  totalPages?: number;
+  totalItems?: number;
+  onPageChange: (page: string) => void;
+}
+
+export interface SelectInputProps {
+  label: string;
+  placeholder?: string;
+  options: Array<string>;
+  onChange: (value: string) => void;
 }
 
 export interface TableProps {
-  mainPage?: boolean;
   headList: Array<string>;
   data: Array<Neighborhood>;
 }
