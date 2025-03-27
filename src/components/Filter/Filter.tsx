@@ -18,7 +18,7 @@ const Filter = ({ neighborhoodsData, onClick }: FilterProps) => {
   }, [neighborhoodsData]);
 
   return (
-    <div className="m-8 p-8 border border-primary rounded-xl w-19/20 flex items-center justify-between gap-4">
+    <div className="m-8 p-8 border border-primary rounded-xl w-19/20 flex flex-col md:flex-row  items-center justify-between gap-4">
       <SelectInput
         label="Selecione o bairro"
         placeholder="Nenhum"

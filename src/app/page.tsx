@@ -70,7 +70,7 @@ function Home() {
       <div className="flex flex-col items-center justify-center w-screen">
         <Title>Mais recentes</Title>
         <Table headList={tableHeadList} data={neighborhoodData} />
-        <div className="p-8 flex justify-end w-screen">
+        <div className="p-8 flex justify-center md:justify-end w-screen">
           <Button type="solid" onClick={handleNavigation}>
             Veja mais
           </Button>

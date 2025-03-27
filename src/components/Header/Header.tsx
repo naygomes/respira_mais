@@ -12,14 +12,14 @@ export default function Header() {
     router.push(route);
   };
   return (
-    <div className="fixed w-screen z-1 bg-background shadow-xl flex flex-row items-center justify-between px-16 box-border py-4 gap-[4vw]">
+    <div className="fixed w-screen z-1 bg-background shadow-xl flex flex-row items-center justify-between px-4 md:px-12 lg:px-16 box-border py-4 gap-[1vw] md:gap-[4vw]">
       <Image
-        className="w-40 cursor-pointer"
+        className="w-25 sm:w-30 md:w-40 cursor-pointer"
         src={logotipo}
         alt="logo do site"
         onClick={(e) => handleNavigation('/')}
       />
-      <div className="flex flex-row items-center gap-[8vw]">
+      <div className="flex flex-row items-center md:gap-[8vw]">
         <Button
           type="text"
           onClick={(e) => handleNavigation('/interactive-map')}

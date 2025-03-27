@@ -88,7 +88,7 @@ const Recents = () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-screen">
-      <div className="text-center my-12 mx-32">
+      <div className="text-center my-0 md:my-12 mx-8 md:mx-32">
         <Title>{cta}</Title>
         <Text>{description}</Text>
       </div>
