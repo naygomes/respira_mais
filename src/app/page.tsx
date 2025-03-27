@@ -55,7 +55,7 @@ function Home() {
 
   const router = useRouter();
   const [position, setPosition] = useState(initialPosition);
-  const { neighbordhoodData, error } = useNeighborhoodData(params);
+  const { neighborhoodData, error } = useNeighborhoodData(params);
   const { location } = useGeolocation();
 
   const handleNavigation = () => {
@@ -69,8 +69,8 @@ function Home() {
       <Map location={location} position={position} />
       <div className="flex flex-col items-center justify-center w-screen">
         <Title>Mais recentes</Title>
-        <Table mainPage headList={tableHeadList} data={neighbordhoodData} />
-        <div className="p-8 flex justify-end w-screen">
+        <Table headList={tableHeadList} data={neighborhoodData} />
+        <div className="p-8 flex justify-center md:justify-end w-screen">
           <Button type="solid" onClick={handleNavigation}>
             Veja mais
           </Button>

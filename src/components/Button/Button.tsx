@@ -6,7 +6,7 @@ const Button = ({ type = 'solid', children, onClick }: ButtonProps) => {
 
   return (
     <button
-      className={`${buttonClasses} py-2 px-4 text-2xl font-light hover:scale-110`}
+      className={`${buttonClasses} py-2 px-4 text-base sm:text-lg md:text-2xl font-light hover:scale-110 cursor-pointer`}
       onClick={onClick}
     >
       {children}
