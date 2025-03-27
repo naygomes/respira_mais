@@ -17,12 +17,6 @@ O Respira + é um projeto que busca manter o carioca informado sobre a qualidade
   <h4 align="center"> 
 	🚧  Projeto em constante evolução...  🚧
   </h4>
-
-## Conteúdo
- * Pré-requisitos
- * Como Rodar o projeto
- * Interface WEB
- * Autora
  
 ## Pré-requisitos
 
